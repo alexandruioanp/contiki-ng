@@ -24,6 +24,7 @@ echo "Sending CoAP requests"
 rm -f $BASENAME.log
 for TARGET in .well-known/core test/push; do
   echo "Get $TARGET" | tee -a $BASENAME.log
+  echo "coap get coap://[$IPADDR]/$TARGET"
   coap get coap://[$IPADDR]/$TARGET 2>&1 | tee coap.log
   cat coap.log >> $BASENAME.log
   # Fetch coap status code (not $? because this is piped)
